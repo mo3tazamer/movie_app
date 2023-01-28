@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:movie_app/core/error.dart';
 import 'package:movie_app/movies/data_layer/models/movie_model.dart';
 
+import '../../../core/network/error_message.dart';
 import '../../../core/util/app_constance.dart';
 
 abstract class BaseMovieRemoteDataSource {
@@ -18,7 +20,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromjson(e)));
     } else {
-      return [];
+       throw ServerException(errorMessageModel: ErrorMessageModel.formjson(response.data));
     }
   }
 
@@ -30,7 +32,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromjson(e)));
     } else {
-      return [];
+      throw ServerException(errorMessageModel: ErrorMessageModel.formjson(response.data));
     }
   }
 
@@ -42,7 +44,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromjson(e)));
     } else {
-      return [];
+      throw ServerException(errorMessageModel: ErrorMessageModel.formjson(response.data));
     }
   }
 }
