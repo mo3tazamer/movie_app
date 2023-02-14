@@ -14,13 +14,15 @@ abstract class BaseMovieRemoteDataSource {
 class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
   @override
   getNowPlaying() async {
-    var response = await Dio().get(AppConstance.nowPlayingPath);
+    var response = await Dio(BaseOptions(validateStatus: (_) => true))
+        .get(AppConstance.nowPlayingPath);
 
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromjson(e)));
     } else {
-       throw ServerException(errorMessageModel: ErrorMessageModel.formjson(response.data));
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.formjson(response.data));
     }
   }
 
@@ -32,7 +34,8 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromjson(e)));
     } else {
-      throw ServerException(errorMessageModel: ErrorMessageModel.formjson(response.data));
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.formjson(response.data));
     }
   }
 
@@ -44,7 +47,8 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromjson(e)));
     } else {
-      throw ServerException(errorMessageModel: ErrorMessageModel.formjson(response.data));
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.formjson(response.data));
     }
   }
 }

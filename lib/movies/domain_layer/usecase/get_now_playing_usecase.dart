@@ -1,13 +1,17 @@
+import 'package:dartz/dartz.dart';
 import 'package:movie_app/movies/domain_layer/entites/movie.dart';
 
+import '../../../core/network/failure.dart';
 import '../repo/base_movie_repo.dart';
 
-class getNowPlayingUseCase {
+class GetNowPlayingUseCase {
   BaseMovieRepo baseMovieRepo;
 
-  getNowPlayingUseCase(this.baseMovieRepo);
+  GetNowPlayingUseCase(this.baseMovieRepo);
 
-  Future<List<Movie>> execute() async {
+  Future<Either<Failure, List<Movie>>> execute() async {
     return await baseMovieRepo.getNowPlaying();
+
   }
+
 }
