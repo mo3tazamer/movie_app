@@ -1,10 +1,14 @@
-class AppConstance {
+class ApiConstance {
   static const String baseUrl = 'https://api.themoviedb.org/3';
   static const String apiKey = '748e405a82d52ef8ebda72cf0bcd95e3';
   static const String nowPlayingPath =
-      '${baseUrl}/movie/now_playing?api_key=$apiKey';
+      '$baseUrl/movie/now_playing?api_key=$apiKey';
   static const String getTopRatedMovies =
-      '${baseUrl}/movie/top_rated?api_key=$apiKey';
+      '$baseUrl/movie/top_rated?api_key=$apiKey';
   static const String getPopularMovies =
-      '${baseUrl}/movie/popular?api_key=$apiKey';
+      '$baseUrl/movie/popular?api_key=$apiKey';
+
+  static const baseimageUrl = 'https://image.tmdb.org/t/p/w500/';
+
+ static String imageUrl( String path)=> '$baseimageUrl$path';
 }

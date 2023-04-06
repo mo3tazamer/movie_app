@@ -16,7 +16,7 @@ class Movie extends Equatable {
       required this.overview,
       required this.voteAverage,
       required this.releaseDate,
-      required this.genreIds});
+      required this.genreIds, });
 
   @override
   List<Object> get props => [

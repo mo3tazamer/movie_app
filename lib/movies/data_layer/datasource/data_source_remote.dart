@@ -15,7 +15,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
   @override
   getNowPlaying() async {
     var response = await Dio(BaseOptions(validateStatus: (_) => true))
-        .get(AppConstance.nowPlayingPath);
+        .get(ApiConstance.nowPlayingPath);
 
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
@@ -28,7 +28,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
 
   @override
   getPopularMovies() async {
-    var response = await Dio().get(AppConstance.getPopularMovies);
+    var response = await Dio().get(ApiConstance.getPopularMovies);
 
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
@@ -41,7 +41,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
 
   @override
   getTopRatedMovies() async {
-    var response = await Dio().get(AppConstance.getTopRatedMovies);
+    var response = await Dio().get(ApiConstance.getTopRatedMovies);
 
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
